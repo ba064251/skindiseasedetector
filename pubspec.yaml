@@ -42,6 +42,7 @@ dependencies:
   flutter_bloc:
   iconsax:
   url_launcher:
+  image_picker:
 
 dev_dependencies:
   flutter_test:

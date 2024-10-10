@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
               SizedBox(
                 width: SizeConfig.screenWidth * 1,
-                height: SizeConfig.screenHeight * 0.53,
+                height: SizeConfig.screenHeight * 0.5,
                 child: SingleChildScrollView(
                   physics: const ScrollPhysics(),
                   scrollDirection: Axis.vertical,

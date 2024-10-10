@@ -132,7 +132,7 @@ class _ProductDescriptionScreenState extends State<ProductDescriptionScreen> {
 
               Container(
                 width: SizeConfig.screenWidth * 1,
-                height: SizeConfig.screenHeight * 0.38,
+                height: SizeConfig.screenHeight * 0.36,
                 decoration: BoxDecoration(
                   color: secondaryColor,
                   boxShadow: [
