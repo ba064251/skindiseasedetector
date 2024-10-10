@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:skindiseasedetector/constants/colors.dart';
 import 'package:skindiseasedetector/constants/size_config.dart';
+import 'package:skindiseasedetector/views/product_description_screen.dart';
+
+import '../reuseablewidgets/face_scanning_container.dart';
+import '../reuseablewidgets/product_container.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,9 +15,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  final List<String> productImages = ['images/productImages/serum1.jpg','images/productImages/serum2.jpg','images/productImages/serum3.jpg'];
+  final List<String> productTitle = ['Glow Recipe Strawberry Smooth BHA +','La Roche-Posay Hyalu B5', 'Hyaluronic + Peptide 24'];
+  final List<String> productPrice = ['25000','14000', '23000'];
+  final List<String> productAvailability = ['In Stock','Out of Stock', 'In Stock'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: secondaryColor,
+      drawer: const Drawer(),
       body: SafeArea(
         top: true,
         child: Container(
@@ -23,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
-              Container(
+              SizedBox(
                 width: SizeConfig.screenWidth * 1,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -31,40 +42,20 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     IconButton(onPressed: (){}, icon: const Icon(Iconsax.category)),
 
+                    Text('AI Care',style: TextStyle(fontSize: SizeConfig.textMultiplier * 2, fontWeight: FontWeight.w600,color: primaryColor),overflow: TextOverflow.fade,),
 
-                    Row(
-                      children: [
 
-                        IconButton(onPressed: (){}, icon: const Icon(Iconsax.search_normal)),
-                        SizedBox(
-                          width: SizeConfig.blockSizeVertical * 0.02,
-                        ),
-                        IconButton(onPressed: (){}, icon: const Icon(Iconsax.message)),
-
-                      ],
-                    )
+                    IconButton(onPressed: (){}, icon: const Icon(Iconsax.message4))
                   ],
                 ),
               ),
 
 
-              Container(
-                width: SizeConfig.screenWidth * 1,
-                height: SizeConfig.screenHeight * 0.45,
-                alignment: Alignment.bottomLeft,
-                padding: const EdgeInsets.only(left: 20,bottom: 40),
-                margin: const EdgeInsets.symmetric(vertical: 20),
-                decoration: BoxDecoration(
-                  color: primaryColor,
-                  borderRadius: BorderRadius.circular(14)
-                ),
-                child: SizedBox(
-                    width: SizeConfig.screenWidth * 0.4,
-                    child: Text('Scan Your Face and Get Solutions',style: TextStyle(fontSize: SizeConfig.textMultiplier * 2, fontWeight: FontWeight.w600,color: secondaryColor),)),
-              ),
+              // Face Scanning Container
+              const FaceScanningContainer(),
 
               SizedBox(
-                height: SizeConfig.blockSizeVertical * 0.6,
+                height: SizeConfig.blockSizeVertical * 2,
               ),
 
               Row(
@@ -75,13 +66,35 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
 
+              // Product Listing
+
               SizedBox(
-                height: SizeConfig.blockSizeVertical * 0.6,
-              ),
-
-
-              
-
+                width: SizeConfig.screenWidth * 1,
+                height: SizeConfig.screenHeight * 0.53,
+                child: SingleChildScrollView(
+                  physics: const ScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  child: ListView.builder(
+                    itemCount: productImages.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    physics: const ScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductDescriptionScreen(),));
+                        },
+                        child: ProductContainer(
+                          productImage: productImages[index],
+                          productTitle: productTitle[index],
+                          productCategory: 'Beauty',
+                          productPrice: '${productPrice[index]} PKR',
+                          productAvailability: productAvailability[index],
+                        ),
+                      );
+                    },),
+                ),
+              )
 
             ],
           ),
@@ -90,3 +103,5 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+

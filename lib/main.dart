@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skindiseasedetector/constants/size_config.dart';
-import 'package:skindiseasedetector/views/home_screen.dart';
 import 'package:skindiseasedetector/views/splash_screen.dart';
 
 void main() {
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return  MaterialApp(
-      home: const HomeScreen(),
+      home: const SplashScreen(),
       title: 'Skin Disease Detector',
       theme: ThemeData(
         textTheme: GoogleFonts.poppinsTextTheme()
