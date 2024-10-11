@@ -42,6 +42,7 @@ dependencies:
   flutter_bloc:
   iconsax:
   url_launcher:
+  google_generative_ai:
   image_picker:
 
 dev_dependencies:
