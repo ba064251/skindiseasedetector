@@ -12,6 +12,9 @@ class FaceScanningContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final ImagePickerService imagePickerService = ImagePickerService();
+
     return Container(
       width: SizeConfig.screenWidth * 1,
       height: SizeConfig.screenHeight * 0.3,
@@ -43,13 +46,13 @@ class FaceScanningContainer extends StatelessWidget {
                       TextButton(
                         child: const Text('Gallery'),
                         onPressed: () {
-                          ImagePickerService.pickImageGallery();// Dismiss alert dialog
+                          imagePickerService.pickImageGallery();// Dismiss alert dialog
                         },
                       ),
                       TextButton(
                         child: const Text('Camera'),
                         onPressed: () {
-                          ImagePickerService.pickImageCamera(); // Dismiss alert dialog
+                          imagePickerService.pickImageCamera(); // Dismiss alert dialog
                         },
                       ),
                     ],
