@@ -46,13 +46,13 @@ class FaceScanningContainer extends StatelessWidget {
                       TextButton(
                         child: const Text('Gallery'),
                         onPressed: () {
-                          imagePickerService.pickImageGallery();// Dismiss alert dialog
+                          imagePickerService.getDataGallery(context);// Dismiss alert dialog
                         },
                       ),
                       TextButton(
                         child: const Text('Camera'),
                         onPressed: () {
-                          imagePickerService.pickImageCamera(); // Dismiss alert dialog
+                          imagePickerService.getDataCamera(context); // Dismiss alert dialog
                         },
                       ),
                     ],

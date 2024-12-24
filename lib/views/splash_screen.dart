@@ -1,7 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:skindiseasedetector/views/home_screen.dart';
+import '../pageview/PageView.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -12,17 +11,44 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
+
   @override
   void initState() {
     // TODO: implement initState
-    Timer(const Duration(milliseconds: 1000), () => Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen(),)),);
     super.initState();
+    navigateToNextScreen();
   }
+
+  void navigateToNextScreen() {
+    Timer(const Duration(seconds: 3), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) =>  const PageViewScreen()),
+      );
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('Splash Screen'),),
+    return const PopScope(
+      canPop: false,
+      child: SafeArea(
+        child: Scaffold(
+            body: Center(
+              child: Stack(
+                children: [
+                  SizedBox(
+                      height: 300,
+                      width: 300,
+                      child: Image(
+                          fit: BoxFit.contain,
+                          image: AssetImage('Assets/Images/hydrahublogo.png'))),
+                ],
+              ),
+            )
+        ),
+      ),
     );
   }
 }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skindiseasedetector/constants/size_config.dart';
 import 'package:skindiseasedetector/views/splash_screen.dart';
 
 void main() {
+  Gemini.init(apiKey: 'AIzaSyBQ6pT1grNc1SUs5RmiPOF0d2u3TVezEJY', enableDebugging: true);
   runApp(const MyApp());
 }
 
